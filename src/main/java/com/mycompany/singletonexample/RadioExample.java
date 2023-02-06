@@ -158,21 +158,21 @@ public class RadioExample extends javax.swing.JFrame {
     private void radio1Clicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio1Clicked
         // TODO add your handling code here:
         //labelResult.setText("Yhteenlasku");
-        calcSum('+');
+        calculate('+');
     }//GEN-LAST:event_radio1Clicked
 
     private void radio2Changed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio2Changed
         // TODO add your handling code here:
-        calcSum('-');
+        calculate('-');
     }//GEN-LAST:event_radio2Changed
 
     private void radio3Changed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio3Changed
         // TODO add your handling code here:
-        calcSum('*');
+        calculate('*');
     }//GEN-LAST:event_radio3Changed
 
     private void radio4Clicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio4Clicked
-        calcSum('/');
+        calculate('/');
     }//GEN-LAST:event_radio4Clicked
 
     /**
@@ -231,7 +231,7 @@ public class RadioExample extends javax.swing.JFrame {
         buttons.add(radio4);
     }
 
-    private void calcSum(char c) {
+    private void calculate(char c) {
         try {
             int a = Integer.parseInt(textNum1.getText());
             int b = Integer.parseInt(textNum2.getText());

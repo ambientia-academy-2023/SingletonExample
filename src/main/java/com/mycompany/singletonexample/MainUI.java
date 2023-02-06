@@ -36,6 +36,10 @@ public class MainUI extends javax.swing.JFrame {
         textName = new javax.swing.JTextField();
         btnOpenSecondForm = new javax.swing.JButton();
         btnSaveName = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +78,28 @@ public class MainUI extends javax.swing.JFrame {
                 btnSaveNameActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Open radio example");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openRadioExample(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,7 +158,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnShowName)
                     .addComponent(btnOpenSecondForm))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,6 +194,18 @@ public class MainUI extends javax.swing.JFrame {
         Singleton objectSingleton = Singleton.getInstance();
         objectSingleton.setFname(textName.getText());
     }//GEN-LAST:event_btnSaveNameActionPerformed
+
+    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+        // TODO add your handling code here:
+        RadioExample objectRadioExample = new RadioExample();
+        objectRadioExample.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void openRadioExample(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openRadioExample
+        // TODO add your handling code here:
+        RadioExample objectRadioExample = new RadioExample();
+        objectRadioExample.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_openRadioExample
 
     /**
      * @param args the command line arguments
@@ -211,6 +249,10 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton btnShowName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel labelResult;
     private javax.swing.JTextField textName;
     private javax.swing.JTextField textNum1;
