@@ -35,6 +35,7 @@ public class MainUI extends javax.swing.JFrame {
         btnShowName = new javax.swing.JButton();
         textName = new javax.swing.JTextField();
         btnOpenSecondForm = new javax.swing.JButton();
+        btnSaveName = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
+        btnSaveName.setText("Tallenna nimi");
+        btnSaveName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,13 +94,19 @@ public class MainUI extends javax.swing.JFrame {
                                 .addComponent(textNum2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelResult, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(textName, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnShowName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnOpenSecondForm, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(textName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnShowName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(95, 95, 95)
+                                        .addComponent(btnOpenSecondForm, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(btnSaveName, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(193, 193, 193))))
         );
         layout.setVerticalGroup(
@@ -111,12 +125,14 @@ public class MainUI extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(labelResult, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSaveName))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnShowName)
                     .addComponent(btnOpenSecondForm))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,10 +141,10 @@ public class MainUI extends javax.swing.JFrame {
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         // TODO add your handling code here:
         try {
-            int num1=Integer.parseInt(textNum1.getText());
-            int num2=Integer.parseInt(textNum2.getText());
-            int sum=num1+num2;
-            labelResult.setText(num1+" + "+num2+" = "+sum);
+            int num1 = Integer.parseInt(textNum1.getText());
+            int num2 = Integer.parseInt(textNum2.getText());
+            int sum = num1 + num2;
+            labelResult.setText(num1 + " + " + num2 + " = " + sum);
             //labelResult.setText(sum+"");
         } catch (Exception e) {
             labelResult.setText(e.getMessage());
@@ -137,8 +153,8 @@ public class MainUI extends javax.swing.JFrame {
 
     private void btnShowNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowNameActionPerformed
         // TODO add your handling code here:
-        String name=textName.getText();
-        labelResult.setText(name);
+        Singleton objectSingleton = Singleton.getInstance();
+        labelResult.setText(objectSingleton.getFname());
     }//GEN-LAST:event_btnShowNameActionPerformed
 
     private void btnOpenSecondFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenSecondFormActionPerformed
@@ -146,6 +162,12 @@ public class MainUI extends javax.swing.JFrame {
         SecondForm objectSecondForm = new SecondForm();
         objectSecondForm.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnOpenSecondFormActionPerformed
+
+    private void btnSaveNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveNameActionPerformed
+        // TODO add your handling code here:
+        Singleton objectSingleton = Singleton.getInstance();
+        objectSingleton.setFname(textName.getText());
+    }//GEN-LAST:event_btnSaveNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +207,7 @@ public class MainUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculate;
     private javax.swing.JButton btnOpenSecondForm;
+    private javax.swing.JButton btnSaveName;
     private javax.swing.JButton btnShowName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
